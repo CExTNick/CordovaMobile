@@ -1,10 +1,12 @@
-define(function (require) {
+define([
+    'jquery', 
+    'underscore', 
+    'backbone',
+    'text!templates/case.html'],function ($, _, Backbone, caseTemplate) {
 
     "use strict";
 
-    var $                   = require('jquery'),
-        _                   = require('underscore'),
-        Backbone            = require('backbone')
+    
 
 
     return Backbone.View.extend({
@@ -15,7 +17,8 @@ define(function (require) {
 
         render: function () {
 
-            this.$el.html('<div class="input-group">    <h5>Case Name</h5>    <input type="text" class="form-control" aria-describedby="basic-addon1"></input></div><div class="input-group">    <h5>Is Complaint Warranted?</h5>    <label class="radio-inline">      <input type="radio" name="optradio">Yes    </label>    <label class="radio-inline">      <input type="radio" name="optradio">No    </label></div><div class="input-group">    <h5>First Name</h5>    <input type="text" class="form-control" aria-describedby="basic-addon1"></input></div><div class="input-group">    <h5>Last Name</h5>    <input type="text" class="form-control" aria-describedby="basic-addon1"></input></div>');
+            this.$el.html(caseTemplate);
+            //this.$el.html('<div class="input-group">    <h5>Case Name</h5>    <input type="text" class="form-control" aria-describedby="basic-addon1"></input></div><div class="input-group">    <h5>Is Complaint Warranted?</h5>    <label class="radio-inline">      <input type="radio" name="optradio">Yes    </label>    <label class="radio-inline">      <input type="radio" name="optradio">No    </label></div><div class="input-group">    <h5>First Name</h5>    <input type="text" class="form-control" aria-describedby="basic-addon1"></input></div><div class="input-group">    <h5>Last Name</h5>    <input type="text" class="form-control" aria-describedby="basic-addon1"></input></div>');
             return this;
         }
 

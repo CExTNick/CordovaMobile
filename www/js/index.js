@@ -22,7 +22,7 @@ require.config({
 
     paths: {
         app: '../app',
-        tpl: '../template',
+        templates: '../../templates',
         "bootstrap": "bootstrap.min",
     },
 
@@ -43,7 +43,6 @@ require.config({
 require(['jquery', 'backbone', 'app/router', 'bootstrap'], function ($, Backbone, Router, bootstrap) {
 
     var router = new Router();
-    $('#mainContent').html("<h1>asdasd</h1>");
     $("body").on("click", ".back-button", function (event) {
         event.preventDefault();
         window.history.back();
