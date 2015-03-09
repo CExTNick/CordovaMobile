@@ -2,23 +2,30 @@ define([
     'jquery', 
     'underscore', 
     'backbone',
-    'text!templates/case.html'],function ($, _, Backbone, caseTemplate) {
+    'text!templates/case.html',
+    'text!templates/captureNavbar.html'
+    ],
+    function ($, _, Backbone, caseTemplate, caseNavbarTemplate, casesTemplate) {
 
     "use strict";
-
+    
     
 
 
     return Backbone.View.extend({
         el: $("#mainContent"),
-        initialize: function () {
-            this.render();
+        events :{
+            "click #submitCaptureButton" : "submit"
         },
-
+        submit : function(){
+            console.log('clicked');
+            window.location.href= "/#";
+            this.$el.html(casesTemplate);
+        },
         render: function () {
-
+            $("#navbarContent").html(caseNavbarTemplate);
             this.$el.html(caseTemplate);
-            //this.$el.html('<div class="input-group">    <h5>Case Name</h5>    <input type="text" class="form-control" aria-describedby="basic-addon1"></input></div><div class="input-group">    <h5>Is Complaint Warranted?</h5>    <label class="radio-inline">      <input type="radio" name="optradio">Yes    </label>    <label class="radio-inline">      <input type="radio" name="optradio">No    </label></div><div class="input-group">    <h5>First Name</h5>    <input type="text" class="form-control" aria-describedby="basic-addon1"></input></div><div class="input-group">    <h5>Last Name</h5>    <input type="text" class="form-control" aria-describedby="basic-addon1"></input></div>');
+            
             return this;
         }
 

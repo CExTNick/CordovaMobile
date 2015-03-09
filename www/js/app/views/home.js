@@ -1,16 +1,33 @@
-define(function (require) {
+define([
+    'jquery',
+    'underscore',
+    'backbone',
+    'text!templates/noCases.html',
+    'text!templates/indexNavbar.html',
+    'text!templates/cases.html',
+    'text!templates/caseListItem.html'],
+    function ($, _, Backbone,
+        noCaseTemplate, indexNavbar, caseListTemplate, caseListItemTemplate) {
 
     "use strict";
-
-    var $                   = require('jquery'),
-        _                   = require('underscore'),
-        Backbone            = require('backbone')
 
 
     return Backbone.View.extend({
         el: $("#mainContent"),
+
+        cases : 0,
         render: function () {
-            this.$el.html('<div class="jumbotron">    <p class="text-center">You do not have any Cases</p>    <p class="text-center">Use the plus button to create a new Case.</p></div>');
+
+            $('#navbarContent').html(indexNavbar);
+            this.cases++;
+            if(this.cases>1){
+                this.$el.html(caseListTemplate);
+                for(var i=1;i<this.cases;i++){
+                    $('#caseList').append(caseListItemTemplate);
+                }
+            }else{
+                this.$el.html(noCaseTemplate);
+            }
             return this;
         }
     });
